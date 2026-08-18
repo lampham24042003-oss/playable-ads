@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Playable Ads — All Links</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --card: #13131c;
+      --card-border: rgba(255,255,255,0.07);
+      --accent1: #7c3aed;
+      --accent2: #06b6d4;
+      --accent3: #f59e0b;
+      --text: #f0f0f8;
+      --sub: #8b8ba7;
+      --radius: 14px;
+      --glow1: rgba(124,58,237,0.35);
+      --glow2: rgba(6,182,212,0.25);
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    /* ── Animated background ── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 60% 50% at 20% 20%, var(--glow1), transparent),
+        radial-gradient(ellipse 50% 40% at 80% 70%, var(--glow2), transparent);
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .wrap {
+      position: relative;
+      z-index: 1;
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 64px 24px 80px;
+    }
+
+    /* ── Hero ── */
+    .hero { text-align: center; margin-bottom: 56px; }
+    .badge {
+      display: inline-flex; align-items: center; gap: 6px;
+      background: rgba(124,58,237,0.18);
+      border: 1px solid rgba(124,58,237,0.4);
+      border-radius: 999px;
+      padding: 5px 14px;
+      font-size: 11px; font-weight: 600; letter-spacing: .08em;
+      text-transform: uppercase; color: #a78bfa;
+      margin-bottom: 24px;
+    }
+    .badge span { font-size: 14px; }
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 900;
+      line-height: 1.1;
+      background: linear-gradient(135deg, #fff 30%, #a78bfa 70%, #67e8f9);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      margin-bottom: 16px;
+    }
+    .hero p {
+      color: var(--sub);
+      font-size: 1.05rem;
+      max-width: 500px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+
+    /* ── Stats bar ── */
+    .stats {
+      display: flex; justify-content: center; gap: 40px;
+      margin-bottom: 48px;
+      flex-wrap: wrap;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-size: 2rem; font-weight: 900;
+      background: linear-gradient(135deg, #7c3aed, #06b6d4);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    .stat-label { font-size: .78rem; color: var(--sub); letter-spacing: .05em; text-transform: uppercase; margin-top: 2px; }
+
+    /* ── Batch sections ── */
+    .batch { margin-bottom: 48px; }
+    .batch-header {
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .batch-pill {
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      border-radius: 999px;
+      padding: 4px 14px;
+      font-size: 11px; font-weight: 700; letter-spacing: .08em;
+      text-transform: uppercase; color: #fff;
+    }
+    .batch-title { font-size: 1.1rem; font-weight: 700; color: var(--text); }
+    .batch-line { flex: 1; height: 1px; background: var(--card-border); }
+
+    /* ── Grid ── */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+      gap: 16px;
+    }
+
+    /* ── Card ── */
+    .card {
+      background: var(--card);
+      border: 1px solid var(--card-border);
+      border-radius: var(--radius);
+      padding: 22px 20px;
+      text-decoration: none;
+      color: var(--text);
+      display: flex; flex-direction: column; gap: 10px;
+      transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    .card::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(124,58,237,0.08) 0%, transparent 60%);
+      opacity: 0;
+      transition: opacity .22s ease;
+    }
+    .card:hover {
+      transform: translateY(-4px);
+      border-color: rgba(124,58,237,0.5);
+      box-shadow: 0 16px 40px rgba(124,58,237,0.2), 0 4px 12px rgba(0,0,0,0.4);
+    }
+    .card:hover::before { opacity: 1; }
+
+    .card-icon {
+      width: 40px; height: 40px; border-radius: 10px;
+      background: linear-gradient(135deg, var(--accent1), var(--accent2));
+      display: flex; align-items: center; justify-content: center;
+      font-size: 18px; flex-shrink: 0;
+    }
+    .card-name {
+      font-size: .95rem; font-weight: 700;
+    }
+    .card-url {
+      font-size: .73rem; color: var(--sub);
+      white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+    }
+    .card-arrow {
+      margin-top: auto;
+      font-size: .8rem; color: #7c3aed; font-weight: 600;
+      display: flex; align-items: center; gap: 4px;
+      opacity: 0; transform: translateX(-4px);
+      transition: opacity .2s ease, transform .2s ease;
+    }
+    .card:hover .card-arrow { opacity: 1; transform: translateX(0); }
+
+    /* ── Copy btn ── */
+    .copy-btn {
+      position: absolute; top: 12px; right: 12px;
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.1);
+      color: var(--sub);
+      font-size: 11px; font-weight: 600;
+      padding: 4px 9px; border-radius: 6px;
+      cursor: pointer;
+      transition: background .15s, color .15s;
+      z-index: 2;
+    }
+    .copy-btn:hover { background: rgba(124,58,237,0.3); color: #fff; }
+    .copy-btn.copied { background: rgba(6,182,212,0.3); color: #67e8f9; }
+
+    /* ── Footer ── */
+    footer {
+      text-align: center;
+      color: var(--sub);
+      font-size: .8rem;
+      margin-top: 24px;
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="hero">
+    <div class="badge"><span>🎮</span> Playable Ads</div>
+    <h1>All Playable Ads</h1>
+    <p>Direct links to every playable ad — click to open, or copy the URL.</p>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Total Ads</div></div>
+    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Batches</div></div>
+    <div class="stat"><div class="stat-num">5</div><div class="stat-label">Per Batch</div></div>
+  </div>
+
+  <!-- BATCH 1 -->
+  <div class="batch">
+    <div class="batch-header">
+      <div class="batch-pill">Batch 1</div>
+      <span class="batch-title">5 Playable Ads</span>
+      <div class="batch-line"></div>
+    </div>
+    <div class="grid" id="batch1-grid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+
+  <!-- BATCH 2 -->
+  <div class="batch">
+    <div class="batch-header">
+      <div class="batch-pill">Batch 2</div>
+      <span class="batch-title">5 Playable Ads</span>
+      <div class="batch-line"></div>
+    </div>
+    <div class="grid" id="batch2-grid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+
+  <footer>
+    Generated automatically · GitHub Pages · lampham24042003-oss/playable-ads
+  </footer>
+</div>
+
+<script>
+  const BASE = 'https://lampham24042003-oss.github.io/playable-ads';
+  const ICONS = ['🎯','🚀','⚡','🎮','🔥','💎','🌟','🎪','🎨','🏆'];
+
+  const ads = [
+    { batch: 1, file: 'batch1/index1.html', label: 'Batch 1 · Ad #1' },
+    { batch: 1, file: 'batch1/index2.html', label: 'Batch 1 · Ad #2' },
+    { batch: 1, file: 'batch1/index3.html', label: 'Batch 1 · Ad #3' },
+    { batch: 1, file: 'batch1/index4.html', label: 'Batch 1 · Ad #4' },
+    { batch: 1, file: 'batch1/index5.html', label: 'Batch 1 · Ad #5' },
+    { batch: 2, file: 'batch2/index1.html', label: 'Batch 2 · Ad #1' },
+    { batch: 2, file: 'batch2/index2.html', label: 'Batch 2 · Ad #2' },
+    { batch: 2, file: 'batch2/index3.html', label: 'Batch 2 · Ad #3' },
+    { batch: 2, file: 'batch2/index4.html', label: 'Batch 2 · Ad #4' },
+    { batch: 2, file: 'batch2/index5.html', label: 'Batch 2 · Ad #5' },
+  ];
+
+  function copy(url, btn) {
+    navigator.clipboard.writeText(url).then(() => {
+      btn.textContent = '✓ Copied';
+      btn.classList.add('copied');
+      setTimeout(() => { btn.textContent = 'Copy'; btn.classList.remove('copied'); }, 1800);
+    });
+  }
+
+  ads.forEach((ad, i) => {
+    const url = `${BASE}/${ad.file}`;
+    const grid = document.getElementById(`batch${ad.batch}-grid`);
+    const idx = ad.batch === 1 ? i : i - 5;
+
+    const card = document.createElement('a');
+    card.href = url;
+    card.target = '_blank';
+    card.className = 'card';
+    card.id = `ad-${ad.batch}-${idx + 1}`;
+    card.innerHTML = `
+      <button class="copy-btn" onclick="event.preventDefault();copy('${url}',this)">Copy</button>
+      <div class="card-icon">${ICONS[i]}</div>
+      <div class="card-name">${ad.label}</div>
+      <div class="card-url">${url}</div>
+      <div class="card-arrow">Open Ad →</div>
+    `;
+    grid.appendChild(card);
+  });
+</script>
+</body>
+</html>
