@@ -205,8 +205,8 @@
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="stat-num">10</div><div class="stat-label">Total Ads</div></div>
-    <div class="stat"><div class="stat-num">2</div><div class="stat-label">Batches</div></div>
+    <div class="stat"><div class="stat-num" id="stat-total">11</div><div class="stat-label">Total Ads</div></div>
+    <div class="stat"><div class="stat-num">3</div><div class="stat-label">Batches</div></div>
     <div class="stat"><div class="stat-num">5</div><div class="stat-label">Per Batch</div></div>
   </div>
 
@@ -234,6 +234,18 @@
     </div>
   </div>
 
+  <!-- EXTRA -->
+  <div class="batch">
+    <div class="batch-header">
+      <div class="batch-pill" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">Extra</div>
+      <span class="batch-title">Add thêm</span>
+      <div class="batch-line"></div>
+    </div>
+    <div class="grid" id="extra-grid">
+      <!-- injected by JS -->
+    </div>
+  </div>
+
   <footer>
     Generated automatically · GitHub Pages · lampham24042003-oss/playable-ads
   </footer>
@@ -254,6 +266,10 @@
     { batch: 2, file: 'batch2/index3.html', label: 'Batch 2 · Ad #3' },
     { batch: 2, file: 'batch2/index4.html', label: 'Batch 2 · Ad #4' },
     { batch: 2, file: 'batch2/index5.html', label: 'Batch 2 · Ad #5' },
+  ];
+
+  const extraAds = [
+    { file: 'add th%C3%AAm.html', label: 'Add Thêm', icon: '➕' },
   ];
 
   function copy(url, btn) {
@@ -279,6 +295,26 @@
       <div class="card-icon">${ICONS[i]}</div>
       <div class="card-name">${ad.label}</div>
       <div class="card-url">${url}</div>
+      <div class="card-arrow">Open Ad →</div>
+    `;
+    grid.appendChild(card);
+  });
+
+  // Extra ads
+  extraAds.forEach((ad, i) => {
+    const url = `${BASE}/${ad.file}`;
+    const grid = document.getElementById('extra-grid');
+    const card = document.createElement('a');
+    card.href = url;
+    card.target = '_blank';
+    card.className = 'card';
+    card.id = `ad-extra-${i + 1}`;
+    card.style.cssText = 'border-color:rgba(245,158,11,0.25)';
+    card.innerHTML = `
+      <button class="copy-btn" onclick="event.preventDefault();copy('${url}',this)">Copy</button>
+      <div class="card-icon" style="background:linear-gradient(135deg,#f59e0b,#ef4444)">${ad.icon}</div>
+      <div class="card-name">${ad.label}</div>
+      <div class="card-url">${decodeURIComponent(url)}</div>
       <div class="card-arrow">Open Ad →</div>
     `;
     grid.appendChild(card);
